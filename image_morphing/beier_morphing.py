@@ -3,7 +3,8 @@
 import cv2
 import numpy as np
 from PIL import Image
-
+import matplotlib as mpl
+mpl.use('module://backend_interagg')
 from image_morphing.line import line
 import matplotlib.pyplot as plt
 
@@ -62,6 +63,7 @@ def warping(source, source_lines, interpolation_lines):
             for l in range(len(source_lines)):
                 interpolated_line = interpolation_lines[l]
                 s_line = source_lines[l]
+
                 u, v = get_u_v(x, interpolated_line)
                 x_dash = get_x(s_line, u, v)
                 di = x_dash - x
@@ -96,8 +98,8 @@ def get_interpolation_lines(source_lines, destination_lines, frame_no, total_fra
 
 
 def morph_image(source, destination, total_frames):
-    source_path = "source_points.txt"
-    dest_path = "dest_points.txt"
+    source_path = "Aya_points.txt"
+    dest_path = "Nada_points.txt"
     source_lines = get_lines(source_path)
     destination_lines = get_lines(dest_path)
     for x in range(1, total_frames):
@@ -116,8 +118,9 @@ def morph_image(source, destination, total_frames):
         new_im.save(str(x)+".jpg")
 
 
-source = plt.imread("ellen.jpg")
-destination = plt.imread("putin.jpg")
+
+source = plt.imread("Aya.jpg")
+destination = plt.imread("Nada.jpg")
 plt.imshow(source)
 plt.show()
 plt.imshow(destination)

@@ -77,8 +77,8 @@ def resize_image(img_path, input_shape=(300, 400)):
     new_image.save(img_path)
 
 
-source = "ellen.png"
-destination = "putin.jpg"
+source = "Nada.jpg"
+destination = "Shrouk.jpg"
 resize_image(source)
 resize_image(destination)
 source = cv2.imread(source)
